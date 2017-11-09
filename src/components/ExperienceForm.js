@@ -4,6 +4,18 @@ import Checkbox from "./Checkbox";
 
 export default class ExperienceForm extends React.Component {
   render() {
+    console.log("hit here", this.props.currentJob);
+    const endDateInput = this.props.currentJob ? null : (
+      <input
+        id="enddate"
+        type="date"
+        value={this.props.formInfo.enddate}
+        currentJob={this.props.currentJob}
+        onChange={e => {
+          this.props.handleChange(e.target.id, e.target.value);
+        }}
+      />
+    );
     return (
       <div>
         <h1>Sign Up</h1>
@@ -44,14 +56,7 @@ export default class ExperienceForm extends React.Component {
           />
           <br />
           <label htmlFor="enddate">End Date: </label>
-          <input
-            id="enddate"
-            type="date"
-            value={this.props.formInfo.enddate}
-            onChange={e => {
-              this.props.handleChange(e.target.id, e.target.value);
-            }}
-          />
+          {endDateInput}
           <br />
           <label htmlFor="current">I currently work here!</label>
           <Checkbox

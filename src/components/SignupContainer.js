@@ -1,22 +1,27 @@
 import React from "react";
 import BasicInfoForm from "./BasicInfoForm";
 import ExperienceForm from "./ExperienceForm";
+import { createUser } from "../services/api";
 
 export default class SignupContainer extends React.Component {
   state = {
-    email: "",
-    name: "",
-    password: "",
-    avatar: "",
-    admin: false,
-    alum: false,
-    company: "",
-    title: "",
-    startdate: "",
-    enddate: "",
-    current: false,
+    user: {
+      email: "",
+      name: "",
+      password: "",
+      avatar: "",
+      admin: false,
+      alum: false,
+      company: "",
+      title: "",
+      startdate: "",
+      enddate: "",
+      current: false
+    },
+
     onFirstForm: true,
-    onSecondForm: false
+    onSecondForm: false,
+    isCurrentJob: false
   };
 
   handleFirstFormSubmit = event => {
@@ -24,44 +29,67 @@ export default class SignupContainer extends React.Component {
   };
 
   handleSecondFormSubmit = event => {
-    console.log(this.state);
+    createUser(this.state.user);
   };
 
   handleChange = (id, value) => {
     console.log(id, value);
     switch (id) {
       case "email":
-        this.setState({ email: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { email: value })
+        });
         break;
       case "name":
-        this.setState({ name: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { name: value })
+        });
         break;
       case "password":
-        this.setState({ password: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { password: value })
+        });
         break;
       case "avatar":
-        this.setState({ avatar: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { avatar: value })
+        });
         break;
       case "admin":
-        this.setState({ admin: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { admin: value })
+        });
         break;
       case "alum":
-        this.setState({ alum: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { alum: value })
+        });
         break;
       case "company":
-        this.setState({ company: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { company: value })
+        });
         break;
       case "title":
-        this.setState({ title: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { title: value })
+        });
         break;
       case "startdate":
-        this.setState({ startdate: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { startdate: value })
+        });
         break;
       case "enddate":
-        this.setState({ enddate: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { enddate: value })
+        });
         break;
       case "current":
-        this.setState({ current: value });
+        this.setState({
+          user: Object.assign({}, this.state.user, { current: value }),
+          isCurrentJob: !this.state.isCurrentJob
+        });
         break;
     }
   };
@@ -83,6 +111,7 @@ export default class SignupContainer extends React.Component {
       <ExperienceForm
         onSecondFormSubmit={this.handleSecondFormSubmit}
         handleChange={this.handleChange}
+        currentJob={this.state.isCurrentJob}
         formInfo={{
           alum: this.state.alum,
           company: this.state.company,
