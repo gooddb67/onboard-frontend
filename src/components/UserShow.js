@@ -1,15 +1,52 @@
-import React from 'react'
+import React from "react";
+import RoomSearchContainer from "./RoomSearchContainer";
+import ExistingRoomBrowser from "./ExistingRoomBrowser";
+import { Route } from "react-router-dom";
+import { getRooms } from "../services/api";
 
 export default class UserShow extends React.Component {
-
   state = {
+    addRoom: false,
+    rooms: []
+  };
 
+  handleClick = () => {
+    this.setState({ addRoom: true });
+  };
+
+  findUserById = (users, id) => {
+    return users.find(user => user.id === parseInt(id));
+  };
+
+  componentDidMount() {
+    getRooms().then(users => {
+      const user_id = this.props.match.params.user_id;
+      const user = this.findUserById(users, user_id);
+      const rooms = user.rooms;
+      this.setState({ rooms });
+    });
   }
 
-  render(){
-    console.log(this.props)
-    return(
-      <div>Rooms</div>
+  render() {
+    const user_id = this.props.match.params.user_id;
+    return (
+      <div>
+        <Route
+          exact
+          path="/users/:user_id"
+          render={() => (
+            <ExistingRoomBrowser
+              id={user_id}
+              rooms={this.state.rooms}
+              onClick={this.handleClick}
+            />
+          )}
+        />
+        <Route
+          path="/users/:user_id/rooms"
+          render={() => <RoomSearchContainer />}
+        />
+      </div>
     );
   }
 }

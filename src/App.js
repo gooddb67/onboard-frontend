@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import SignupContainer from "./components/SignupContainer";
 import Home from "./components/Home";
-import UserShow from "./components/UserShow"
+import UserShow from "./components/UserShow";
 
 class App extends Component {
   render() {
@@ -15,7 +15,6 @@ class App extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignupContainer} />
         <Route path="/users/:user_id" component={UserShow} />
-
       </div>
     );
   }
