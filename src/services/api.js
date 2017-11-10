@@ -29,11 +29,13 @@ export function getRooms() {
 function destroy(url) {
   return fetch(url, {
     method: "DELETE"
-  }).then(res => res.json())
+  }).then(res => res.json());
 }
 
-export function userLeaveRoom(userId, roomId){
-  return destroy(`http://localhost:3000/api/v1/users/${userId}/rooms/${roomId}`)
+export function userLeaveRoom(userId, roomId) {
+  return destroy(
+    `http://localhost:3000/api/v1/users/${userId}/rooms/${roomId}`
+  );
 }
 
 function patch(url, postData) {
@@ -41,9 +43,16 @@ function patch(url, postData) {
     method: "PATCH",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     body: JSON.stringify(postData)
-  }).then(res => res.json())
+  }).then(res => res.json());
 }
 
-export function joinRoom(userId, roomId, postData){
-  return patch(`http://localhost:3000/api/v1/users/${userId}/rooms/${roomId}`, postData)
+export function joinRoom(userId, roomId, postData) {
+  return patch(
+    `http://localhost:3000/api/v1/users/${userId}/rooms/${roomId}`,
+    postData
+  );
+}
+
+export function getCompanies() {
+  return get("http://localhost:3000/api/v1/companies");
 }

@@ -1,5 +1,8 @@
 import React from "react";
 import Search from "../Search";
+import { getCompanies } from "../../services/api";
+import CompaniesList from "./CompaniesList";
+import CompanyForm from "./CompanyForm";
 
 export default class InterviewPage extends React.Component {
   state = {
@@ -30,8 +33,15 @@ export default class InterviewPage extends React.Component {
     );
   };
 
+  handleCompanyFormSubmit = () => {
+    console.log("this");
+  };
+
   render() {
     console.log("InterviewPage", this.props);
+    const newCompanyForm = this.state.addNewCompany ? (
+      <CompanyForm onCompanyFormSubmit={this.handleCompanyFormSubmit} />
+    ) : null;
     return (
       <div>
         <h1>Search Interview Questions by Company</h1>
