@@ -30,6 +30,12 @@ export default class SignupContainer extends React.Component {
 
   handleSecondFormSubmit = event => {
     createUser(this.state.user);
+    this.setState({
+      onFirstForm: true,
+      onSecondForm: false,
+      isCurrentJob: false
+    });
+    //reset values and state?
   };
 
   handleChange = (id, value) => {
