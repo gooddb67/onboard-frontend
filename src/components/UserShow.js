@@ -44,7 +44,9 @@ export default class UserShow extends React.Component {
         />
         <Route
           path="/users/:user_id/rooms"
-          render={() => <RoomSearchContainer />}
+          render={() => (
+            <RoomSearchContainer id={user_id} rooms={this.state.rooms} />
+          )}
         />
       </div>
     );

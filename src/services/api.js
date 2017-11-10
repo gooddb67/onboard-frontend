@@ -10,6 +10,10 @@ export function createUser(postData) {
   return post("http://localhost:3000/api/v1/users", postData);
 }
 
+export function createRoom(userId, postData) {
+  return post(`http://localhost:3000/api/v1/users/${userId}/rooms`, postData);
+}
+
 function get(url) {
   return fetch(url).then(res => res.json());
 }
@@ -19,5 +23,5 @@ export function getUsers() {
 }
 
 export function getRooms() {
-  return get("http://localhost:3000/api/v1/rooms")
+  return get("http://localhost:3000/api/v1/rooms");
 }
