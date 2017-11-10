@@ -5,7 +5,6 @@ function post(url, postData) {
     body: JSON.stringify(postData)
   })
     .then(res => res.json())
-    .then(json => console.log(json));
 }
 
 export function createUser(postData) {

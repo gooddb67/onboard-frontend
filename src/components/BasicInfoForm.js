@@ -5,7 +5,7 @@ import Checkbox from "./Checkbox";
 export default class BasicInfoForm extends React.Component {
   render() {
     return (
-      <div class="form">
+      <div className="form">
         <h1>Get onboard</h1>
         <form>
           <InputTextBox

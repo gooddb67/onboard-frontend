@@ -20,7 +20,7 @@ export default class ExperienceForm extends React.Component {
     );
     return (
       <div>
-        <form class="form">
+        <form className="form">
           <h1>Most Recent Experience</h1>
           <br />
           <InputTextBox
