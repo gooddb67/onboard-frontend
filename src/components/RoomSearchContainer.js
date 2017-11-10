@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "./Search";
-import { getRooms, createRoom } from "../services/api";
+import { getRooms, createRoom, userLeaveRoom, joinRoom } from "../services/api";
 import RoomList from "./RoomList";
 import RoomForm from "./RoomForm";
 
@@ -18,6 +18,19 @@ export default class RoomSearchContainer extends React.Component {
       })
     );
   };
+
+  handleLeaveRoom = (roomId) => {
+    userLeaveRoom(this.props.id, roomId)
+    .then(json => this.showAllRooms())
+  }
+
+  handleJoinRoom = (roomId) => {
+    const postData = {user_id: this.props.id, room_id: roomId}
+    joinRoom(this.props.id, roomId, postData)
+    .then(json => {console.log(json)
+      this.showAllRooms()
+    })
+  }
 
   componentDidMount() {
     this.showAllRooms();
@@ -54,9 +67,12 @@ export default class RoomSearchContainer extends React.Component {
         <input type="button" value="Add New Room" onClick={this.addNewRoom} />
         {newRoomForm}
         <RoomList
+          userId={this.props.id}
           search={this.state.search}
           rooms={this.state.rooms}
           userRooms={this.props.rooms}
+          onLeaveRoom={this.handleLeaveRoom}
+          onJoinRoom={this.handleJoinRoom}
         />
       </div>
     );

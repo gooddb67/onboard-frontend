@@ -3,9 +3,9 @@ import React from "react";
 export default class RoomCard extends React.Component {
   render() {
     const showButton = this.props.joined ? (
-      <input data-roomid={this.props.id} type="button" value="Joined" />
+      <input type="button" value="Leave" onClick={() => {this.props.onLeaveRoom(this.props.id)} } />
     ) : (
-      <input data-roomid={this.props.id} type="button" value="Join Room" />
+      <input type="button" value="Join Room" onClick={() => {this.props.onJoinRoom(this.props.id)}} />
     );
     return (
       <div>

@@ -2,6 +2,11 @@ import React from "react";
 import RoomCard from "./RoomCard";
 
 export default class RoomList extends React.Component {
+
+  roomCheck = (room, userId) => {
+    return !!room.users.find((user) => user.id === parseInt(userId))
+  }
+
   render() {
     const regex = new RegExp(this.props.search, "i");
     const filteredRooms = this.props.rooms.filter(room =>
@@ -13,11 +18,13 @@ export default class RoomList extends React.Component {
         {filteredRooms.map(room => (
           <RoomCard
             joined={
-              !!this.props.userRooms.find(r => r.id === parseInt(room.id))
+              this.roomCheck(room, this.props.userId)
             }
             name={room.name}
             avatar={room.avatar}
             id={room.id}
+            onLeaveRoom={this.props.onLeaveRoom}
+            onJoinRoom={this.props.onJoinRoom}
           />
         ))}
       </ul>

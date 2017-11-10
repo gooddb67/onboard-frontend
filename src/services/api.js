@@ -25,3 +25,25 @@ export function getUsers() {
 export function getRooms() {
   return get("http://localhost:3000/api/v1/rooms");
 }
+
+function destroy(url) {
+  return fetch(url, {
+    method: "DELETE"
+  }).then(res => res.json())
+}
+
+export function userLeaveRoom(userId, roomId){
+  return destroy(`http://localhost:3000/api/v1/users/${userId}/rooms/${roomId}`)
+}
+
+function patch(url, postData) {
+  return fetch(url, {
+    method: "PATCH",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify(postData)
+  }).then(res => res.json())
+}
+
+export function joinRoom(userId, roomId, postData){
+  return patch(`http://localhost:3000/api/v1/users/${userId}/rooms/${roomId}`, postData)
+}
