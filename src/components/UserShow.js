@@ -2,7 +2,7 @@ import React from "react";
 import RoomSearchContainer from "./RoomSearchContainer";
 import ExistingRoomBrowser from "./ExistingRoomBrowser";
 import { Route } from "react-router-dom";
-import { getRooms } from "../services/api";
+import { getUsers } from "../services/api";
 
 export default class UserShow extends React.Component {
   state = {
@@ -19,7 +19,7 @@ export default class UserShow extends React.Component {
   };
 
   componentDidMount() {
-    getRooms().then(users => {
+    getUsers().then(users => {
       const user_id = this.props.match.params.user_id;
       const user = this.findUserById(users, user_id);
       const rooms = user.rooms;

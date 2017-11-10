@@ -14,6 +14,10 @@ function get(url) {
   return fetch(url).then(res => res.json());
 }
 
-export function getRooms() {
+export function getUsers() {
   return get("http://localhost:3000/api/v1/users");
+}
+
+export function getRooms() {
+  return get("http://localhost:3000/api/v1/rooms")
 }
