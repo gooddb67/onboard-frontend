@@ -1,8 +1,9 @@
 import React from "react";
 import RoomSearchContainer from "./RoomSearchContainer";
 import ExistingRoomBrowser from "./ExistingRoomBrowser";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { getUsers } from "../services/api";
+import HomeRoomContainer from "./HomeRoomContainer";
 
 export default class UserShow extends React.Component {
   state = {
@@ -31,23 +32,29 @@ export default class UserShow extends React.Component {
     const user_id = this.props.match.params.user_id;
     return (
       <div>
-        <Route
-          exact
-          path="/users/:user_id"
-          render={() => (
-            <ExistingRoomBrowser
-              id={user_id}
-              rooms={this.state.rooms}
-              onClick={this.handleClick}
-            />
-          )}
-        />
-        <Route
-          path="/users/:user_id/rooms"
-          render={() => (
-            <RoomSearchContainer id={user_id} rooms={this.state.rooms} />
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/users/:user_id"
+            render={() => (
+              <ExistingRoomBrowser
+                id={user_id}
+                rooms={this.state.rooms}
+                onClick={this.handleClick}
+              />
+            )}
+          />
+          <Route
+            path="/users/:user_id/rooms/:room_id"
+            render={props => <HomeRoomContainer {...props} />}
+          />
+          <Route
+            path="/users/:user_id/rooms"
+            render={() => (
+              <RoomSearchContainer id={user_id} rooms={this.state.rooms} />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
