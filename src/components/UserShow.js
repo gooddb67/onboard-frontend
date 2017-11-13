@@ -31,7 +31,7 @@ export default class UserShow extends React.Component {
   render() {
     const user_id = this.props.match.params.user_id;
     return (
-      <div>
+      <div className="main-container">
         <Switch>
           <Route
             exact

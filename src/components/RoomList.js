@@ -14,7 +14,7 @@ export default class RoomList extends React.Component {
     );
     console.log(filteredRooms);
     return (
-      <ul>
+      <ul className="grid-container">
         {filteredRooms.map(room => (
           <RoomCard
             joined={

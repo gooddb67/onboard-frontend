@@ -93,3 +93,131 @@ body {
   background: linear-gradient(to bottom, #34caca 5%, #30c9c9 100%);
   background-color: #34caca;
 }
+
+/*Search*/
+.search-input {
+  width: 55%;
+  padding: 12px 12px;
+  font-size: 18px;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
+  border-left: none;
+  outline:0;
+}
+
+/*Room Form */
+
+.room-form-input {
+  width: 35%;
+  padding: 12px 12px;
+  font-size: 14px;
+  /*margin-left: 5%;*/
+  margin-bottom: 5px
+}
+
+#new-room-button {
+  background-color: #f5dff6;
+  border: none;
+  color: #524d4d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 1%;
+  outline:0;
+}
+
+#create-room-button {
+  background-color: #f5dff6;
+  border: none;
+  color: #524d4d;
+  padding: 10px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 1%;
+  outline:0;
+}
+
+/*Add room page*/
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container {
+  margin: 5% 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-row-gap: 35px;
+  grid-column-gap: 3%
+}
+
+.room-card {
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  width: 150px;
+  height: 200px;
+  padding: 30px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: lightgray;
+  text-align: center;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  background-color: #f1faf4;
+}
+
+.room-card-text {
+  grid-row-start: 2;
+  text-decoration: none;
+  color: #1e1b1b
+}
+
+.add-room {
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  width: 150px;
+  height: 200px;
+  padding: 30px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: lightgray;
+  text-align: center;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  background-color: #f1faf4
+
+}
+
+#add-room-text {
+  text-decoration: none;
+  grid-row-start: 2;
+  color: #1e1b1b
+}
+
+.add-icon{
+  color: #585656;
+  display:block;
+  margin:auto;
+}
+
+.room-card-button {
+  -moz-box-shadow: inset 0px 1px 0px 0px #45d6d6;
+  width: 94%;
+  margin: 0 auto;
+  background-color: #fafafa;
+  border: 1px solid;
+  display: inline-block;
+  color: black;
+  font-size: 14px;
+  padding: 10px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  outline: none;
+  grid-row-start: 2
+
+}

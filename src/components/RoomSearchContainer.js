@@ -61,10 +61,9 @@ export default class RoomSearchContainer extends React.Component {
       <RoomForm onRoomFormSubmit={this.handleRoomFormSubmit} />
     ) : null;
     return (
-      <div>
-        <h1>Find A Room</h1>
+      <div className="search-container">
         <Search onChange={this.handleChange} search={this.state.search} />
-        <input type="button" value="Add New Room" onClick={this.addNewRoom} />
+        <input id="new-room-button" type="button" value="Add New Room" onClick={this.addNewRoom} />
         {newRoomForm}
         <RoomList
           userId={this.props.id}
