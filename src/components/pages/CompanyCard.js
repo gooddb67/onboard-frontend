@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class CompanyCard extends React.Component {
   render() {
@@ -24,7 +25,12 @@ export default class CompanyCard extends React.Component {
           </a>
         </div>
         <div className="card-button">
-          <input type="button" value="See Questions" />
+          <Link
+            to={`/users/${this.props.userId}/rooms/${this.props
+              .roomId}/interviews/${this.props.company.id}`}
+          >
+            See Questions
+          </Link>
         </div>
       </div>
     );

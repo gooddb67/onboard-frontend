@@ -8,9 +8,16 @@ export default class CompaniesList extends React.Component {
     const filteredCompanies = this.props.companies.filter(company =>
       company.name.match(regex)
     );
+    console.log(this.props.userId, this.props.roomId);
     return (
       <div>
-        {filteredCompanies.map(company => <CompanyCard company={company} />)}
+        {filteredCompanies.map(company => (
+          <CompanyCard
+            userId={this.props.userId}
+            roomId={this.props.roomId}
+            company={company}
+          />
+        ))}
       </div>
     );
   }
