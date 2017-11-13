@@ -63,3 +63,16 @@ export function createCompany(room_id, postData) {
     postData
   );
 }
+
+export function getCompanyQuestions(room_id, company_id) {
+  return get(
+    `http://localhost:3000/api/v1/rooms/${room_id}/companies/${company_id}/questions`
+  );
+}
+
+export function createQuestion(room_id, company_id, postData) {
+  return post(
+    `http://localhost:3000/api/v1/rooms/${room_id}/companies/${company_id}/questions`,
+    postData
+  );
+}
