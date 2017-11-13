@@ -53,10 +53,13 @@ export function joinRoom(userId, roomId, postData) {
   );
 }
 
-export function getCompanies() {
-  return get("http://localhost:3000/api/v1/companies");
+export function getCompanies(room_id) {
+  return get(`http://localhost:3000/api/v1/rooms/${room_id}/companies`);
 }
 
-export function createCompany(postData) {
-  return post("http://localhost:3000/api/v1/companies", postData);
+export function createCompany(room_id, postData) {
+  return post(
+    `http://localhost:3000/api/v1/rooms/${room_id}/companies`,
+    postData
+  );
 }

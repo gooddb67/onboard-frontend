@@ -24,12 +24,15 @@ export default class InterviewPage extends React.Component {
   };
 
   showAllCompanies = () => {
-    getCompanies().then(companies => this.setState({ companies }));
+    const room_id = this.props.match.params.room_id;
+    getCompanies(room_id).then(companies => {
+      this.setState({ companies });
+    });
   };
 
   handleCompanyFormSubmit = (name, description, avatar, url) => {
-    console.log("form submit", name, description, avatar, url);
-    createCompany({ name, description, avatar, url }).then(json => {
+    const room_id = this.props.match.params.room_id;
+    createCompany(room_id, { name, description, avatar, url }).then(json => {
       console.log(json);
       this.setState({ addNewCompany: !this.state.addNewCompany });
       this.showAllCompanies();
