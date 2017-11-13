@@ -13,14 +13,12 @@ export default class HomeRoomContainer extends React.Component {
         <HomeNavBar userId={params.user_id} roomId={params.room_id} />
 
         <Route
-          exact
           path="/users/:user_id/rooms/:room_id/interviews"
           render={props => {
             return <InterviewPage {...props} />;
           }}
         />
         <Route
-          exact
           path="/users/:user_id/rooms/:room_id/alumni"
           render={props => {
             return <AlumniPage {...props} />;
