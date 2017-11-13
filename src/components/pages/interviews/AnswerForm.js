@@ -1,19 +1,19 @@
 import React from "react";
 import InputTextBox from "../../InputTextBox";
 
-export default class QuestionForm extends React.Component {
+export default class AnswerForm extends React.Component {
   state = {
-    question: ""
+    answer: ""
   };
 
   handleChange = (id, value) => {
-    this.setState({ question: value });
+    this.setState({ answer: value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onQuestionFormSubmit(this.state.question);
-    this.setState({ question: "" });
+    this.props.onAnswerFormSubmit(this.state.answer);
+    this.setState({ answer: "" });
   };
 
   render() {
@@ -23,15 +23,15 @@ export default class QuestionForm extends React.Component {
           <span className="close" onClick={this.props.onCloseClick}>
             &times;
           </span>
-          <h1>Add A Question</h1>
+          <h1>Add A Answer</h1>
           <InputTextBox
-            id="question"
-            value={this.state.name}
-            placeholder="Question"
+            id="answer"
+            value={this.state.answer}
+            placeholder="Answer"
             onChange={this.handleChange}
           />
           <br />
-          <input type="submit" value="Create Question" />
+          <input type="submit" value="Create Answer" />
         </form>
       </div>
     );

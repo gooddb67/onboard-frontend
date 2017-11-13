@@ -8,6 +8,11 @@ export default class QuestionCard extends React.Component {
     return (
       <div>
         <div>{this.props.question}</div>
+        <input
+          type="button"
+          value="Add Answer"
+          onClick={() => this.props.onAddAnswer(this.props.id)}
+        />
         <ul>
           {sortedAnswers.map(answer => (
             <li>
