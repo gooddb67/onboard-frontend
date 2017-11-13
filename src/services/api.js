@@ -56,3 +56,7 @@ export function joinRoom(userId, roomId, postData) {
 export function getCompanies() {
   return get("http://localhost:3000/api/v1/companies");
 }
+
+export function createCompany(postData) {
+  return post("http://localhost:3000/api/v1/companies", postData);
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "../Search";
-import { getCompanies } from "../../services/api";
+import { getCompanies, createCompany } from "../../services/api";
 import CompaniesList from "./CompaniesList";
 import CompanyForm from "./CompanyForm";
 
@@ -12,9 +12,7 @@ export default class InterviewPage extends React.Component {
   };
 
   handleChange = term => {
-    this.setState({
-      search: term
-    });
+    this.setState({ search: term });
   };
 
   componentDidMount() {
@@ -26,36 +24,50 @@ export default class InterviewPage extends React.Component {
   };
 
   showAllCompanies = () => {
-    getCompanies().then(companies =>
-      this.setState({
-        companies
-      })
-    );
+    getCompanies().then(companies => this.setState({ companies }));
   };
 
-  handleCompanyFormSubmit = () => {
-    console.log("this");
+  handleCompanyFormSubmit = (name, description, avatar, url) => {
+    console.log("form submit", name, description, avatar, url);
+    createCompany({ name, description, avatar, url }).then(json => {
+      console.log(json);
+      this.setState({ addNewCompany: !this.state.addNewCompany });
+      this.showAllCompanies();
+    });
+  };
+
+  handleCloseClick = () => {
+    this.setState({ addNewCompany: !this.state.addNewCompany });
   };
 
   render() {
-    console.log("InterviewPage", this.props);
-    const newCompanyForm = this.state.addNewCompany ? (
-      <CompanyForm onCompanyFormSubmit={this.handleCompanyFormSubmit} />
-    ) : null;
+    const modalStyle = this.state.addNewCompany
+      ? { display: "block" }
+      : { display: "none" };
     return (
-      <div>
-        <h1>Search Interview Questions by Company</h1>
-        <Search onChange={this.handleChange} search={this.state.search} />
-        <input
-          type="button"
-          value="Add New Company"
-          onClick={this.addNewCompany}
-        />
-        <CompaniesList
-          userId={this.props.id}
-          search={this.state.search}
-          companies={this.state.companies}
-        />
+      <div className="main-container">
+        <div className="empty-container" />
+        <div className="child-container-content">
+          <h1>Explore Interview Questions</h1>
+          <Search onChange={this.handleChange} search={this.state.search} />
+          <input
+            type="button"
+            value="+ New Company"
+            onClick={this.addNewCompany}
+            id="add-new-company-button"
+          />
+          <CompanyForm
+            onCompanyFormSubmit={this.handleCompanyFormSubmit}
+            modalStyle={modalStyle}
+            onCloseClick={this.handleCloseClick}
+          />
+          <CompaniesList
+            userId={this.props.id}
+            search={this.state.search}
+            companies={this.state.companies}
+          />
+        </div>
+        <div className="empty-container" />
       </div>
     );
   }

@@ -19,28 +19,24 @@ export default class RoomSearchContainer extends React.Component {
     );
   };
 
-  handleLeaveRoom = (roomId) => {
-    userLeaveRoom(this.props.id, roomId)
-    .then(json => this.showAllRooms())
-  }
+  handleLeaveRoom = roomId => {
+    userLeaveRoom(this.props.id, roomId).then(json => this.showAllRooms());
+  };
 
-  handleJoinRoom = (roomId) => {
-    const postData = {user_id: this.props.id, room_id: roomId}
-    joinRoom(this.props.id, roomId, postData)
-    .then(json => {console.log(json)
-      this.showAllRooms()
-    })
-  }
+  handleJoinRoom = roomId => {
+    const postData = { user_id: this.props.id, room_id: roomId };
+    joinRoom(this.props.id, roomId, postData).then(json => {
+      console.log(json);
+      this.showAllRooms();
+    });
+  };
 
   componentDidMount() {
     this.showAllRooms();
   }
 
   handleChange = term => {
-    console.log(term);
-    this.setState({
-      search: term
-    });
+    this.setState({ search: term });
   };
 
   addNewRoom = () => {

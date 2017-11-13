@@ -28,7 +28,7 @@ export default class CompanyForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onRoomFormSubmit(
+    this.props.onCompanyFormSubmit(
       this.state.name,
       this.state.description,
       this.state.avatar,
@@ -39,8 +39,12 @@ export default class CompanyForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="modal form" style={this.props.modalStyle}>
+        <form onSubmit={this.handleSubmit} className="modal-form">
+          <span className="close" onClick={this.props.onCloseClick}>
+            &times;
+          </span>
+          <h1>Add A Company</h1>
           <InputTextBox
             id="name"
             value={this.state.name}
@@ -69,7 +73,7 @@ export default class CompanyForm extends React.Component {
             onChange={this.handleChange}
           />
           <br />
-          <input type="submit" value="Create Room" />
+          <input type="submit" value="Create Company" />
         </form>
       </div>
     );
