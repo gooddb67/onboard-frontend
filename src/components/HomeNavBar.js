@@ -6,6 +6,7 @@ const style = {
   padding: "20px 20px"
 };
 function HomeNavBar(props) {
+  console.log(props);
   return (
     <div>
       <NavLink
@@ -14,6 +15,7 @@ function HomeNavBar(props) {
       >
         Interviews
       </NavLink>
+
       <NavLink
         to={`/users/${props.userId}/rooms/${props.roomId}/alumni`}
         style={style}

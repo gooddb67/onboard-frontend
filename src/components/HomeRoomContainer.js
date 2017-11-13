@@ -1,19 +1,29 @@
 import React from "react";
 import HomeNavBar from "./HomeNavBar";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import InterviewPage from "./pages/InterviewPage";
+import AlumniPage from "./pages/AlumniPage";
 
 export default class HomeRoomContainer extends React.Component {
   render() {
-    console.log("home container", this.props);
     const params = this.props.match.params;
+    console.log(this.props);
     return (
       <div>
         <HomeNavBar userId={params.user_id} roomId={params.room_id} />
+
         <Route
+          exact
           path="/users/:user_id/rooms/:room_id/interviews"
           render={props => {
             return <InterviewPage {...props} />;
+          }}
+        />
+        <Route
+          exact
+          path="/users/:user_id/rooms/:room_id/alumni"
+          render={props => {
+            return <AlumniPage {...props} />;
           }}
         />
       </div>

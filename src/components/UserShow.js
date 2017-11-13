@@ -46,7 +46,10 @@ export default class UserShow extends React.Component {
           />
           <Route
             path="/users/:user_id/rooms/:room_id"
-            render={props => <HomeRoomContainer {...props} />}
+            render={props => {
+              console.log(props, "LSDN");
+              return <HomeRoomContainer {...props} />;
+            }}
           />
           <Route
             path="/users/:user_id/rooms"

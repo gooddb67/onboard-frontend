@@ -84,3 +84,7 @@ export function postVote(answerId, postData) {
 export function postAnswer(postData) {
   return post(`http://localhost:3000/api/v1/answers`, postData);
 }
+
+export function getRoom(roomId) {
+  return get(`http://localhost:3000/api/v1/rooms/${roomId}`);
+}

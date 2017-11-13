@@ -11,8 +11,9 @@ export default class CompaniesList extends React.Component {
     console.log(this.props.userId, this.props.roomId);
     return (
       <div>
-        {filteredCompanies.map(company => (
+        {filteredCompanies.map((company, idx) => (
           <CompanyCard
+            key={idx}
             userId={this.props.userId}
             roomId={this.props.roomId}
             company={company}
