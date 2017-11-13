@@ -2,7 +2,11 @@ import React from "react";
 import CompanyIntro from "./interviews/CompanyIntro";
 import QuestionsList from "./interviews/QuestionsList";
 import Search from "../Search";
-import { getCompanyQuestions, createQuestion } from "../../services/api";
+import {
+  getCompanyQuestions,
+  createQuestion,
+  postVote
+} from "../../services/api";
 import QuestionForm from "./interviews/QuestionForm";
 
 export default class CompanyInterviewPage extends React.Component {
@@ -10,6 +14,15 @@ export default class CompanyInterviewPage extends React.Component {
     questions: [],
     search: "",
     addNewQuestion: false
+  };
+
+  handleVote = answerId => {
+    postVote(answerId, {
+      upvoted: 1
+    }).then(res => {
+      console.log(res, "hit response");
+      this.showAllQuestions();
+    });
   };
 
   showAllQuestions = () => {
@@ -68,6 +81,7 @@ export default class CompanyInterviewPage extends React.Component {
           onCloseClick={this.handleCloseClick}
         />
         <QuestionsList
+          onVote={this.handleVote}
           questions={this.state.questions}
           search={this.state.search}
         />

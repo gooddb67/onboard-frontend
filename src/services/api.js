@@ -76,3 +76,7 @@ export function createQuestion(room_id, company_id, postData) {
     postData
   );
 }
+
+export function postVote(answerId, postData) {
+  return patch(`http://localhost:3000/api/v1/answers/${answerId}`, postData);
+}

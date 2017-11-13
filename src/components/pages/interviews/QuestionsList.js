@@ -9,7 +9,9 @@ export default class QuestionsList extends React.Component {
     );
     return (
       <ul>
-        {filteredQuestions.map(question => <QuestionCard {...question} />)}
+        {filteredQuestions.map(question => (
+          <QuestionCard onVote={this.props.onVote} {...question} />
+        ))}
       </ul>
     );
   }
