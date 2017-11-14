@@ -99,31 +99,36 @@ export default class CompanyInterviewPage extends React.Component {
       ? { display: "block" }
       : { display: "none" };
     return (
-      <div>
-        <CompanyIntro />
-        <Search onChange={this.handleChange} search={this.state.search} />
-        <input
-          type="button"
-          value="+ New Question"
-          onClick={this.addNewQuestion}
-          id="add-new-question-button"
-        />
-        <QuestionForm
-          onQuestionFormSubmit={this.handleQuestionFormSubmit}
-          modalStyle={modalStyleQuestion}
-          onCloseClick={this.handleCloseClick}
-        />
-        <QuestionsList
-          onVote={this.handleVote}
-          questions={this.state.questions}
-          search={this.state.search}
-          onAddAnswer={this.handleAddAnswer}
-        />
-        <AnswerForm
-          onAnswerFormSubmit={this.handleAnswerSubmit}
-          modalStyle={modalStyleAnswer}
-          onCloseClick={this.handleCloseAnswerClick}
-        />
+      <div className="main-container">
+        <div className="empty-container" />
+        <div className="child-container-content">
+          <h1>All Companies</h1>
+          <CompanyIntro />
+          <Search onChange={this.handleChange} search={this.state.search} />
+          <input
+            type="button"
+            value="+ New Question"
+            onClick={this.addNewQuestion}
+            id="add-new-question-button"
+          />
+          <QuestionForm
+            onQuestionFormSubmit={this.handleQuestionFormSubmit}
+            modalStyle={modalStyleQuestion}
+            onCloseClick={this.handleCloseClick}
+          />
+          <QuestionsList
+            onVote={this.handleVote}
+            questions={this.state.questions}
+            search={this.state.search}
+            onAddAnswer={this.handleAddAnswer}
+          />
+          <AnswerForm
+            onAnswerFormSubmit={this.handleAnswerSubmit}
+            modalStyle={modalStyleAnswer}
+            onCloseClick={this.handleCloseAnswerClick}
+          />
+        </div>
+        <div className="empty-container" />
       </div>
     );
   }

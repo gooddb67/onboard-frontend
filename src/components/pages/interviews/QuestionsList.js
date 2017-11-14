@@ -8,7 +8,7 @@ export default class QuestionsList extends React.Component {
       question.question.match(regex)
     );
     return (
-      <ul>
+      <div>
         {filteredQuestions.map(question => (
           <QuestionCard
             onVote={this.props.onVote}
@@ -16,7 +16,7 @@ export default class QuestionsList extends React.Component {
             {...question}
           />
         ))}
-      </ul>
+      </div>
     );
   }
 }

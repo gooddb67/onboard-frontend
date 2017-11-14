@@ -23,10 +23,10 @@ export default class QuestionForm extends React.Component {
           <span className="close" onClick={this.props.onCloseClick}>
             &times;
           </span>
-          <h1>Add A Question</h1>
+          <h1>Add Question</h1>
           <InputTextBox
             id="question"
-            value={this.state.name}
+            value={this.state.question}
             placeholder="Question"
             onChange={this.handleChange}
           />

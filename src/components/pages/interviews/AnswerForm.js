@@ -23,7 +23,7 @@ export default class AnswerForm extends React.Component {
           <span className="close" onClick={this.props.onCloseClick}>
             &times;
           </span>
-          <h1>Add A Answer</h1>
+          <h1>Add Answer</h1>
           <InputTextBox
             id="answer"
             value={this.state.answer}
