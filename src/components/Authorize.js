@@ -11,7 +11,10 @@ export function authorize(RenderedComponent) {
       console.log("HOC props", this.props);
 
       const { pathname } = this.props.location;
-      if (this.loggedIn() && pathname == "/login") {
+      if (
+        (this.loggedIn() && pathname == "/login") ||
+        (this.loggedIn() && pathname == "/signup")
+      ) {
         console.log("I am logged in", this.loggedIn());
         return <Redirect to="/" />;
       } else if (!this.loggedIn() && pathname == "/signup") {

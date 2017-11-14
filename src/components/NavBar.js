@@ -2,34 +2,48 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
-  return (
+  const showNavBar = props.loggedIn ? (
     <ul className="navbar" style={ulStyle}>
-      <li style={liStyle}>
+      <li style={liStyleLeft}>
         <NavLink exact to="/" style={linkStyle}>
           Home
         </NavLink>
       </li>
-      <li style={liStyle}>
-        <NavLink to="/login" style={linkStyle}>
-          Log In
-        </NavLink>
-      </li>
-      <li style={liStyle}>
+      <li style={liStyleRight}>
         <NavLink to="/logout" style={linkStyle}>
           Log Out
         </NavLink>
       </li>
-      <li style={liStyle}>
+    </ul>
+  ) : (
+    <ul className="navbar" style={ulStyle}>
+      <li style={liStyleLeft}>
+        <NavLink exact to="/" style={linkStyle}>
+          Home
+        </NavLink>
+      </li>
+      <li style={liStyleRight}>
         <NavLink to="/signup" style={linkStyle}>
           Sign Up
         </NavLink>
       </li>
+      <li style={liStyleRight}>
+        <NavLink to="/login" style={linkStyle}>
+          Log In
+        </NavLink>
+      </li>
     </ul>
   );
+
+  return showNavBar;
 }
 
-const liStyle = {
+const liStyleLeft = {
   float: "left"
+};
+
+const liStyleRight = {
+  float: "right"
 };
 
 const ulStyle = {

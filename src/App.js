@@ -44,10 +44,10 @@ class App extends Component {
     const AuthLoginForm = authorize(Login);
     const AuthUserShow = authorize(UserShow);
     const AuthSignupForm = authorize(SignupContainer);
-
+    const loggedIn = !!localStorage.getItem("jwtToken");
     return (
       <div className="App">
-        <NavBar />
+        <NavBar loggedIn={loggedIn} />
         <Route exact path="/" component={Home} />
         <Route
           path="/login"
