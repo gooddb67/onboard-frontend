@@ -1,13 +1,17 @@
 function post(url, postData) {
   return fetch(url, {
     method: "post",
-    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+    },
     body: JSON.stringify(postData)
   }).then(res => res.json());
 }
 
 export function createUser(postData) {
-  return post("http://localhost:3000/api/v1/users", postData);
+  return post("http://localhost:3000/api/v1/signup", postData);
 }
 
 export function createRoom(userId, postData) {
@@ -15,7 +19,13 @@ export function createRoom(userId, postData) {
 }
 
 function get(url) {
-  return fetch(url).then(res => res.json());
+  return fetch(url, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+    }
+  }).then(res => res.json());
 }
 
 export function getUsers() {
@@ -28,7 +38,8 @@ export function getRooms() {
 
 function destroy(url) {
   return fetch(url, {
-    method: "DELETE"
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${localStorage.getItem("jwtToken")}` }
   }).then(res => res.json());
 }
 
@@ -41,7 +52,11 @@ export function userLeaveRoom(userId, roomId) {
 function patch(url, postData) {
   return fetch(url, {
     method: "PATCH",
-    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+    },
     body: JSON.stringify(postData)
   }).then(res => res.json());
 }
@@ -87,4 +102,8 @@ export function postAnswer(postData) {
 
 export function getRoom(roomId) {
   return get(`http://localhost:3000/api/v1/rooms/${roomId}`);
+}
+
+export function login(postData) {
+  return post(`http://localhost:3000/api/v1/signin`, postData);
 }

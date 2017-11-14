@@ -2,7 +2,7 @@ import React from "react";
 import BasicInfoForm from "./BasicInfoForm";
 import ExperienceForm from "./ExperienceForm";
 import { createUser } from "../services/api";
-import {Redirect} from 'react-router'
+import { Redirect } from "react-router";
 
 export default class SignupContainer extends React.Component {
   state = {
@@ -22,9 +22,7 @@ export default class SignupContainer extends React.Component {
 
     onFirstForm: true,
     onSecondForm: false,
-    isCurrentJob: false,
-    redirect: false,
-    userId: null
+    isCurrentJob: false
   };
 
   handleFirstFormSubmit = event => {
@@ -32,18 +30,12 @@ export default class SignupContainer extends React.Component {
   };
 
   handleSecondFormSubmit = event => {
-    createUser(this.state.user)
-    .then(user => {console.log(user)
-      this.setState({
+    this.props.onSignup(this.state.user);
+    this.setState({
       onFirstForm: true,
       onSecondForm: false,
-      isCurrentJob: false,
-      redirect: true,
-      userId: user.id
-    })
-  })
-
-    //reset values and state?
+      isCurrentJob: false
+    });
   };
 
   handleChange = (id, value) => {
@@ -109,37 +101,33 @@ export default class SignupContainer extends React.Component {
   };
 
   render() {
-    if (this.state.redirect){
-      return <Redirect to={`/users/${this.state.userId}`}/>
-    }else{
-      const showForm = this.state.onFirstForm ? (
-        <BasicInfoForm
-          onFirstFormSubmit={this.handleFirstFormSubmit}
-          handleChange={this.handleChange}
-          formInfo={{
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            avatar: this.state.avatar,
-            admin: this.state.admin
-          }}
-        />
-      ) : (
-        <ExperienceForm
-          onSecondFormSubmit={this.handleSecondFormSubmit}
-          handleChange={this.handleChange}
-          currentJob={this.state.isCurrentJob}
-          formInfo={{
-            alum: this.state.alum,
-            company: this.state.company,
-            title: this.state.title,
-            startdate: this.state.startdate,
-            enddate: this.state.enddate,
-            current: this.state.current
-          }}
-        />
-      );
-      return <div>{showForm}</div>;
-    }
+    const showForm = this.state.onFirstForm ? (
+      <BasicInfoForm
+        onFirstFormSubmit={this.handleFirstFormSubmit}
+        handleChange={this.handleChange}
+        formInfo={{
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password,
+          avatar: this.state.avatar,
+          admin: this.state.admin
+        }}
+      />
+    ) : (
+      <ExperienceForm
+        onSecondFormSubmit={this.handleSecondFormSubmit}
+        handleChange={this.handleChange}
+        currentJob={this.state.isCurrentJob}
+        formInfo={{
+          alum: this.state.alum,
+          company: this.state.company,
+          title: this.state.title,
+          startdate: this.state.startdate,
+          enddate: this.state.enddate,
+          current: this.state.current
+        }}
+      />
+    );
+    return <div>{showForm}</div>;
   }
 }

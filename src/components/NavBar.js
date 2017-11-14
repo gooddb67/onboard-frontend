@@ -15,6 +15,11 @@ function NavBar(props) {
         </NavLink>
       </li>
       <li style={liStyle}>
+        <NavLink to="/logout" style={linkStyle}>
+          Log Out
+        </NavLink>
+      </li>
+      <li style={liStyle}>
         <NavLink to="/signup" style={linkStyle}>
           Sign Up
         </NavLink>
