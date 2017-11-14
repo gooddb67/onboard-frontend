@@ -22,7 +22,7 @@ export default class RoomForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="room-form-input">
         <form onSubmit={this.handleSubmit}>
           <input
             name="name"
