@@ -60,7 +60,12 @@ export default class RoomSearchContainer extends React.Component {
       <div>
         <h1>Find A Room</h1>
         <Search onChange={this.handleChange} search={this.state.search} />
-        <input type="button" value="Add New Room" onClick={this.addNewRoom} />
+        <input
+          id="new-room-button"
+          type="button"
+          value="Add New Room"
+          onClick={this.addNewRoom}
+        />
         {newRoomForm}
         <RoomList
           userId={this.props.id}

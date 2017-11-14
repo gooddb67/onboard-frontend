@@ -558,3 +558,34 @@ div.child-container-content {
   outline: none;
   grid-row-start: 2;
 }
+
+/*Alumni Page*/
+.alumni-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  padding: 30px;
+}
+.alumni-card {
+  display: grid;
+  width: 215px;
+  height: 110px;
+  padding: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: lightgray;
+  text-align: center;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  background-color: #fcf3f9;
+}
+.list-info {
+  list-style-type: none;
+  width: 70%;
+  margin: auto;
+  padding: 5px;
+  text-decoration: none;
+}
+#alumni-header {
+  text-align: center;
+  font-family: "Lato";
+}

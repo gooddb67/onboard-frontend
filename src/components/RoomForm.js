@@ -25,6 +25,7 @@ export default class RoomForm extends React.Component {
       <div className="room-form-input">
         <form onSubmit={this.handleSubmit}>
           <input
+            className="room-form-input"
             name="name"
             type="text"
             placeholder="Enter a room name"
@@ -33,6 +34,7 @@ export default class RoomForm extends React.Component {
           />{" "}
           <br />
           <input
+            className="room-form-input"
             name="avatar"
             type="text"
             placeholder="Add room avatar"
@@ -40,7 +42,7 @@ export default class RoomForm extends React.Component {
             value={this.state.avatar}
           />{" "}
           <br />
-          <input type="submit" value="Create Room" />
+          <input id="create-room-button" type="submit" value="Create Room" />
         </form>
       </div>
     );

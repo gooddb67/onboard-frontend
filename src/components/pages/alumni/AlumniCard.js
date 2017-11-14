@@ -2,8 +2,8 @@ import React from "react";
 
 function AlumniCard({ name, email, avatar, experiences }) {
   return (
-    <div>
-      <ul>
+    <div className="alumni-card">
+      <ul className="list-info">
         {name}
         <li>
           <a href={`mailto:${email}`}>{email}</a>
