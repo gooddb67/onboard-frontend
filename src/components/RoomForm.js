@@ -1,4 +1,5 @@
 import React from "react";
+import InputTextBox from "./InputTextBox";
 
 export default class RoomForm extends React.Component {
   state = {
@@ -6,11 +7,14 @@ export default class RoomForm extends React.Component {
     avatar: ""
   };
 
-  handleChange = e => {
-    if (e.target.name === "name") {
-      this.setState({ name: e.target.value });
-    } else if (e.target.name === "avatar") {
-      this.setState({ avatar: e.target.value });
+  handleChange = (id, value) => {
+    switch (id) {
+      case "name":
+        this.setState({ name: value });
+        break;
+      case "avatar":
+        this.setState({ avatar: value });
+        break;
     }
   };
 
@@ -22,27 +26,28 @@ export default class RoomForm extends React.Component {
 
   render() {
     return (
-      <div className="room-form-input">
-        <form onSubmit={this.handleSubmit}>
-          <input
-            className="room-form-input"
-            name="name"
-            type="text"
-            placeholder="Enter a room name"
-            onChange={this.handleChange}
+      <div className="modal form" style={this.props.modalStyle}>
+        <form onSubmit={this.handleSubmit} className="modal-form">
+          <span className="close" onClick={this.props.onCloseClick}>
+            &times;
+          </span>
+          <h1>Add Room</h1>
+          <InputTextBox
+            id="name"
             value={this.state.name}
-          />{" "}
-          <br />
-          <input
-            className="room-form-input"
-            name="avatar"
-            type="text"
-            placeholder="Add room avatar"
+            placeholder="Room Name"
             onChange={this.handleChange}
-            value={this.state.avatar}
-          />{" "}
+          />
           <br />
-          <input id="create-room-button" type="submit" value="Create Room" />
+          <br />
+          <InputTextBox
+            id="avatar"
+            value={this.state.avatar}
+            placeholder="Avatar Link"
+            onChange={this.handleChange}
+          />
+          <br />
+          <input type="submit" value="Create Room" />
         </form>
       </div>
     );

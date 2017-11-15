@@ -8,8 +8,6 @@ export function authorize(RenderedComponent) {
     }
 
     render() {
-      console.log("HOC props", this.props);
-
       const { pathname } = this.props.location;
       if (
         (this.loggedIn() && pathname == "/login") ||

@@ -20,18 +20,7 @@ export default class UserShow extends React.Component {
   };
 
   componentDidMount() {
-    // fetch("http://localhost:3000/api/v1/users")
-    //   .then(res => console.log(res.json()))
-    //   .then(users => {
-    //     console.log(users);
-    //     const user_id = this.props.match.params.user_id;
-    //     const user = this.findUserById(users, user_id);
-    //     const rooms = user.rooms;
-    //     this.setState({ rooms });
-    //   });
-
     getUsers().then(users => {
-      console.log(users);
       const user_id = this.props.match.params.user_id;
       const user = this.findUserById(users, user_id);
       const rooms = user.rooms;
@@ -58,7 +47,6 @@ export default class UserShow extends React.Component {
           <Route
             path="/users/:user_id/rooms/:room_id"
             render={props => {
-              console.log(props, "LSDN");
               return <HomeRoomContainer {...props} />;
             }}
           />

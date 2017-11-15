@@ -1,45 +1,38 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const style = {
-  textDecoration: "none",
-  padding: "20px 20px"
-};
 function HomeNavBar(props) {
   console.log(props);
   return (
-    <div>
-      <NavLink
-        to={`/users/${props.userId}/rooms/${props.roomId}/interviews`}
-        style={style}
-      >
-        Interviews
-      </NavLink>
-
-      <NavLink
-        to={`/users/${props.userId}/rooms/${props.roomId}/alumni`}
-        style={style}
-      >
-        Alumni Page
-      </NavLink>
-      <NavLink
-        to={`/users/${props.userId}/rooms/${props.roomId}/projects`}
-        style={style}
-      >
-        Project Board
-      </NavLink>
-      <NavLink
-        to={`/users/${props.userId}/rooms/${props.roomId}/jobs`}
-        style={style}
-      >
-        Job Board
-      </NavLink>
-      <NavLink
-        to={`/users/${props.userId}/rooms/${props.roomId}/resume`}
-        style={style}
-      >
-        Resume Review
-      </NavLink>
+    <div className="homenavbar">
+      <div className="navlink">
+        <NavLink to={`/users/${props.userId}/rooms/${props.roomId}/interviews`}>
+          Interviews
+        </NavLink>
+      </div>
+      <div className="navlink">
+        <NavLink to={`/users/${props.userId}/rooms/${props.roomId}/alumni`}>
+          Alumni Page
+        </NavLink>
+      </div>
+      <div className="navlink">
+        {" "}
+        <NavLink to={`/users/${props.userId}/rooms/${props.roomId}/projects`}>
+          Project Board
+        </NavLink>
+      </div>
+      <div className="navlink">
+        {" "}
+        <NavLink to={`/users/${props.userId}/rooms/${props.roomId}/jobs`}>
+          Job Board
+        </NavLink>
+      </div>
+      <div className="navlink">
+        {" "}
+        <NavLink to={`/users/${props.userId}/rooms/${props.roomId}/resume`}>
+          Resume Review
+        </NavLink>
+      </div>
     </div>
   );
 }

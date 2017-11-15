@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
+  console.log("hitting navbar container", props, props.userId);
   const showNavBar = props.loggedIn ? (
     <ul className="navbar" style={ulStyle}>
       <li style={liStyleLeft}>
@@ -9,6 +10,12 @@ function NavBar(props) {
           Home
         </NavLink>
       </li>
+      <li style={liStyleLeft}>
+        <NavLink exact to={`/users/${props.userId}`} style={linkStyle}>
+          My Rooms
+        </NavLink>
+      </li>
+
       <li style={liStyleRight}>
         <NavLink to="/logout" style={linkStyle}>
           Log Out
@@ -47,7 +54,7 @@ const liStyleRight = {
 };
 
 const ulStyle = {
-  backgroundColor: "#2ae0bb",
+  backgroundColor: "#20c8a6",
   fontFamily: "Lato",
   margin: "0",
   padding: "0",

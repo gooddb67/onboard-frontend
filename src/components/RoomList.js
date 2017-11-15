@@ -13,7 +13,7 @@ export default class RoomList extends React.Component {
     );
     console.log(filteredRooms);
     return (
-      <ul className="grid-container">
+      <div className="child-container-content rooms">
         {filteredRooms.map(room => (
           <RoomCard
             joined={this.roomCheck(room, this.props.userId)}
@@ -24,7 +24,7 @@ export default class RoomList extends React.Component {
             onJoinRoom={this.props.onJoinRoom}
           />
         ))}
-      </ul>
+      </div>
     );
   }
 }

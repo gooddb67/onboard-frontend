@@ -7,7 +7,6 @@ import AlumniPage from "./pages/AlumniPage";
 export default class HomeRoomContainer extends React.Component {
   render() {
     const params = this.props.match.params;
-    console.log(this.props);
     return (
       <div>
         <HomeNavBar userId={params.user_id} roomId={params.room_id} />

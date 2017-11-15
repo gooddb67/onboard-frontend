@@ -26,6 +26,7 @@ export default class CompanyCard extends React.Component {
         </div>
         <div className="card-button">
           <Link
+            className="company-card-button"
             to={`/users/${this.props.userId}/rooms/${this.props
               .roomId}/interviews/${this.props.company.id}`}
           >

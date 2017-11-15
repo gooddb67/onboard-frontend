@@ -51,30 +51,40 @@ export default class RoomSearchContainer extends React.Component {
     });
   };
 
+  handleCloseClick = () => {
+    this.setState({ addNewRoom: !this.state.addNewRoom });
+  };
+
   render() {
-    console.log("hit container", this.state.search);
-    const newRoomForm = this.state.addNewRoom ? (
-      <RoomForm onRoomFormSubmit={this.handleRoomFormSubmit} />
-    ) : null;
+    const modalStyle = this.state.addNewRoom
+      ? { display: "block" }
+      : { display: "none" };
     return (
-      <div>
-        <h1>Find A Room</h1>
-        <Search onChange={this.handleChange} search={this.state.search} />
-        <input
-          id="new-room-button"
-          type="button"
-          value="Add New Room"
-          onClick={this.addNewRoom}
-        />
-        {newRoomForm}
-        <RoomList
-          userId={this.props.id}
-          search={this.state.search}
-          rooms={this.state.rooms}
-          userRooms={this.props.rooms}
-          onLeaveRoom={this.handleLeaveRoom}
-          onJoinRoom={this.handleJoinRoom}
-        />
+      <div className="main-container">
+        <div className="empty-container" />
+        <div className="child-container-content">
+          <h1>Find A Room</h1>
+          <Search onChange={this.handleChange} search={this.state.search} />
+          <input
+            type="button"
+            value="+ Add New Room"
+            onClick={this.addNewRoom}
+          />
+          <RoomForm
+            onRoomFormSubmit={this.handleRoomFormSubmit}
+            modalStyle={modalStyle}
+            onCloseClick={this.handleCloseClick}
+          />
+          <RoomList
+            userId={this.props.id}
+            search={this.state.search}
+            rooms={this.state.rooms}
+            userRooms={this.props.rooms}
+            onLeaveRoom={this.handleLeaveRoom}
+            onJoinRoom={this.handleJoinRoom}
+          />
+        </div>
+        <div className="empty-container" />
       </div>
     );
   }

@@ -22,8 +22,12 @@ export default class RoomCard extends React.Component {
       />
     );
     return (
-      <div className="room-card">
-        <div>{this.props.name}</div>
+      <div className="room-card find-all">
+        <p>{this.props.name}</p>
+        <img
+          src="https://media.simplecast.com/podcast/logo_image/2481/larachat-logo.png"
+          alt=""
+        />
         {showButton}
       </div>
     );

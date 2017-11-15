@@ -17,6 +17,7 @@ class App extends Component {
     login(params).then(user => {
       if (!user.error) {
         localStorage.setItem("jwtToken", user.jwt);
+        localStorage.setItem("user_id", user.id);
         this.setState({ user: user });
       }
     });
@@ -24,6 +25,7 @@ class App extends Component {
 
   logoutUser = () => {
     localStorage.removeItem("jwtToken");
+    localStorage.removeItem("user_id");
     this.setState({
       user: {}
     });
@@ -32,7 +34,6 @@ class App extends Component {
   signup = user => {
     createUser(user).then(json => {
       if (!json.error) {
-        console.log(json);
         localStorage.setItem("jwtToken", json.jwt);
         this.setState({ user: json });
       }
@@ -40,14 +41,14 @@ class App extends Component {
   };
 
   render() {
-    console.log("hello from app");
     const AuthLoginForm = authorize(Login);
     const AuthUserShow = authorize(UserShow);
     const AuthSignupForm = authorize(SignupContainer);
     const loggedIn = !!localStorage.getItem("jwtToken");
+    const userId = loggedIn ? localStorage.getItem("user_id") : null;
     return (
       <div className="App">
-        <NavBar loggedIn={loggedIn} />
+        <NavBar loggedIn={loggedIn} userId={userId} />
         <Route exact path="/" component={Home} />
         <Route
           path="/login"
@@ -62,7 +63,6 @@ class App extends Component {
         <Route
           path="/signup"
           render={props => {
-            console.log("hitting sign up render");
             return this.state.user.jwt ? (
               <Redirect to={`/users/${this.state.user.id}`} />
             ) : (
