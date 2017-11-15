@@ -35,6 +35,7 @@ class App extends Component {
     createUser(user).then(json => {
       if (!json.error) {
         localStorage.setItem("jwtToken", json.jwt);
+        localStorage.setItem("user_id", json.id);
         this.setState({ user: json });
       }
     });
