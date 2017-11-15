@@ -6,10 +6,7 @@ export default class CompanyCard extends React.Component {
     return (
       <div className="card company">
         <div className="card-image">
-          <img
-            src="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png"
-            alt=""
-          />
+          <img src={this.props.company.avatar} alt="" />
         </div>
         <div className="card-info">
           <p className="card-company-name">{this.props.company.name}</p>

@@ -10,10 +10,7 @@ export default class HomeRoomCard extends React.Component {
           className="room-card-text"
           to={`/users/${this.props.userId}/rooms/${this.props.room.id}`}
         >
-          <img
-            src="https://media.simplecast.com/podcast/logo_image/2481/larachat-logo.png"
-            alt=""
-          />
+          <img src={this.props.room.avatar} alt="" />
           <p>{this.props.room.name}</p>
         </Link>
       </div>

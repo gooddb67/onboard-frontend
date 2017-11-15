@@ -102,7 +102,7 @@ export default class CompanyInterviewPage extends React.Component {
       <div className="main-container">
         <div className="empty-container" />
         <div className="child-container-content">
-          <h1>All Companies</h1>
+          <h1>All Questions</h1>
           <CompanyIntro />
           <Search onChange={this.handleChange} search={this.state.search} />
           <input

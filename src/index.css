@@ -308,6 +308,7 @@ div.child-container-content {
 .card-image img {
   width: 100px;
   height: 100px;
+  border-radius: 10%;
 }
 
 .card-company-name {
@@ -463,10 +464,9 @@ div.child-container-content {
 }
 
 .answer-card-info p:first-child {
-  font-weight: bold;
   color: #232323;
   margin: 8px 0;
-  padding-right: 10px;
+  padding-right: 30px;
 }
 .answer-card-info p:last-child {
   margin: 8px 0;
@@ -640,12 +640,13 @@ div.child-container-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-column-gap: 10px;
+  grid-row-gap: 10px;
   padding: 30px;
 }
 .alumni-card {
   display: grid;
   width: 215px;
-  height: 210px;
+  height: 230px;
   padding: 5px;
   border-width: 2px;
   border-style: solid;
@@ -662,7 +663,7 @@ div.child-container-content {
   text-decoration: none;
 }
 
-.list-info img{
+.list-info img {
   border-radius: 15px;
 }
 #alumni-header {
