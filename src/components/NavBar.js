@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
-  console.log("hitting navbar container", props, props.userId);
   const showNavBar = props.loggedIn ? (
     <ul className="navbar" style={ulStyle}>
       <li style={liStyleLeft}>

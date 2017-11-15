@@ -42,6 +42,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("HI", this.state.user);
     const AuthLoginForm = authorize(Login);
     const AuthUserShow = authorize(UserShow);
     const AuthSignupForm = authorize(SignupContainer);
@@ -54,7 +55,7 @@ class App extends Component {
         <Route
           path="/login"
           render={props => {
-            return this.state.user.jwt ? (
+            return !!localStorage.getItem("jwtToken") ? (
               <Redirect to={`/users/${this.state.user.id}`} />
             ) : (
               <AuthLoginForm onLogin={this.loginUser} {...props} />
@@ -81,7 +82,14 @@ class App extends Component {
 
         <Route
           path="/users/:user_id"
-          render={props => <AuthUserShow {...props} />}
+          render={props => {
+            const urlUserId = props.match.params.user_id;
+            if (urlUserId == localStorage.getItem("user_id")) {
+              return <AuthUserShow {...props} />;
+            } else {
+              return <Redirect to="/" />;
+            }
+          }}
         />
       </div>
     );
