@@ -7,6 +7,7 @@ import UserShow from "./components/UserShow";
 import Login from "./components/Login";
 import { authorize } from "./components/Authorize";
 import { login, createUser } from "./services/api";
+import jwt_decode from "jwt-decode";
 
 class App extends Component {
   state = {
@@ -42,12 +43,16 @@ class App extends Component {
   };
 
   render() {
-    console.log("HI", this.state.user);
+    console.log("HI from decode", decode);
     const AuthLoginForm = authorize(Login);
     const AuthUserShow = authorize(UserShow);
     const AuthSignupForm = authorize(SignupContainer);
     const loggedIn = !!localStorage.getItem("jwtToken");
     const userId = loggedIn ? localStorage.getItem("user_id") : null;
+    const decode = loggedIn
+      ? jwt_decode(localStorage.getItem("jwtToken"))
+      : null;
+    const user_id = decode ? decode.user_id : null;
     return (
       <div className="App">
         <NavBar loggedIn={loggedIn} userId={userId} />
@@ -84,7 +89,7 @@ class App extends Component {
           path="/users/:user_id"
           render={props => {
             const urlUserId = props.match.params.user_id;
-            if (urlUserId == localStorage.getItem("user_id")) {
+            if (urlUserId == user_id) {
               return <AuthUserShow {...props} />;
             } else {
               return <Redirect to="/" />;
