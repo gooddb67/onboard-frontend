@@ -40,14 +40,6 @@ export default class BasicInfoForm extends React.Component {
             placeholder="Avatar Link"
           />
           <br />
-          <div className="checkbox">
-            <label htmlFor="admin">Admin:</label>
-            <Checkbox
-              id="admin"
-              value={this.props.formInfo.admin}
-              onChange={this.props.handleChange}
-            />
-          </div>
           <br />
           <br />
           <input
