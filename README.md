@@ -9,3 +9,5 @@ You can also ask general questions about the interview at a specific company, an
 onBoard was built with React on the front end, and a Rails API on the back end.
 
 A video demonstation can be found at https://vimeo.com/255667060
+
+Made in collaboration with Christina Pan - https://github.com/cpan001
