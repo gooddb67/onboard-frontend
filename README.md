@@ -8,4 +8,6 @@ You can also ask general questions about the interview at a specific company, an
 
 onBoard was built with React on the front end, and a Rails API on the back end.
 
+<img src="./components/images/onboardgif.gif" width="40" height="40" />
+
 A video demonstation can be found at https://vimeo.com/255667060
