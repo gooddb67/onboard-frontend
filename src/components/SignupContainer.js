@@ -39,7 +39,6 @@ export default class SignupContainer extends React.Component {
   };
 
   handleChange = (id, value) => {
-    console.log(id, value);
     switch (id) {
       case "email":
         this.setState({

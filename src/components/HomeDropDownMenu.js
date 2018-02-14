@@ -32,7 +32,6 @@ const linkStyle = {
   fontSize: "18px"
 };
 function HomeDropDownMenu(props) {
-  console.log(props);
   return (
     <li style={liStyleLeft}>
       <div className="dropdown">

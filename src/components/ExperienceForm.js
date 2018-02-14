@@ -4,7 +4,6 @@ import Checkbox from "./Checkbox";
 
 export default class ExperienceForm extends React.Component {
   render() {
-    console.log("hit here", this.props.currentJob);
     const endDateInput = this.props.currentJob ? null : (
       <div>
         <input
